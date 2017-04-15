@@ -42,14 +42,15 @@ function main () {
 	// document.getElementById("diameter").onchange = function (event) {
 	document.getElementById("diameter").onchange = function (event) {
 		diameter = event.target.value;
-		updateHeight ();
 	}
+
 	document.getElementById("height").onchange = function (event) {
 		height = event.target.value;
-		updateDiameter ();
 	}
+
 	document.getElementById("lights").onchange = function (event) {
-		 console.log (event.target.value);
+		 var lightName = event.target.value;
+		 console.log (lightFactors[lightName]);
 	}
 }
 
