@@ -54,15 +54,25 @@ function main () {
 	}
 
 	document.getElementById("submit").onmousedown = function (event) {
+		if (document.getElementById("mathResults").classList.contains('error')) {
+			$('#mathResults').removeClass('error');
+		}
 		if (typeof(multFactor) === 'number') {
-			document.getElementById("mathResults").innerHTML = "Horizontal Distance: "
-			 								+ equation (diameter, multFactor, height);
+			var horizontalDistance = equation (diameter, multFactor, height);
+			if (isNaN(horizontalDistance)) {
+				console.log("error");
+				error ();
+			}
+			else {
+				document.getElementById("mathResults").innerHTML = "Horizontal Distance: "
+			 														+ horizontalDistance;
+			}
 		}
 		else {
 			var retString = "Horizontal Distances:<br />";
 			console.log(multFactor);
 			retString += equation(diameter, multFactor[0], height)
-						 + " (diameter as short distance <br />"
+						 + " (diameter as short distance) <br />"
 						 + equation(diameter, multFactor[1], height)
 						 + " (diameter as long distance)"; 
 			document.getElementById("mathResults").innerHTML = retString;
@@ -71,6 +81,11 @@ function main () {
 
 	function equation (diam, multiplicationFactor, gridHeight) {
 		return Math.sqrt(Math.pow((diam / multiplicationFactor), 2) - Math.pow(gridHeight, 2));
+	}
+
+	function error () {
+		document.getElementById('mathResults').innerHTML = "The inputs you have entered are not valid"
+		document.getElementById('mathResults').classList.add('error');
 	}
 }
 
