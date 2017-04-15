@@ -50,7 +50,27 @@ function main () {
 
 	document.getElementById("lights").onchange = function (event) {
 		 var lightName = event.target.value;
-		 console.log (lightFactors[lightName]);
+		 multFactor = lightFactors[lightName];
+	}
+
+	document.getElementById("submit").onmousedown = function (event) {
+		if (typeof(multFactor) === 'number') {
+			document.getElementById("mathResults").innerHTML = "Horizontal Distance: "
+			 								+ equation (diameter, multFactor, height);
+		}
+		else {
+			var retString = "Horizontal Distances:<br />";
+			console.log(multFactor);
+			retString += equation(diameter, multFactor[0], height)
+						 + " (diameter as short distance <br />"
+						 + equation(diameter, multFactor[1], height)
+						 + " (diameter as long distance)"; 
+			document.getElementById("mathResults").innerHTML = retString;
+		}
+	}
+
+	function equation (diam, multiplicationFactor, gridHeight) {
+		return Math.sqrt(Math.pow((diam / multiplicationFactor), 2) - Math.pow(gridHeight, 2));
 	}
 }
 
