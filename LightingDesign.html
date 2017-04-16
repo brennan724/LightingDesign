@@ -15,9 +15,7 @@
 		Height of Light:
 		<input type="text" id="height">
 	</p>
-	<p>
-		Light:
-	</p>
+	Light:
 	<select id="lights">
 		<option></option>
 	  <option value="ETC-S4-E-Filler">-- ETC Source 4 Ellipsoidals --</option>
@@ -55,59 +53,63 @@
 	  <option value="ETC-D40-Lustr">Lustr+</option>
 	</select>
 	<br>
-	<div id="directionSelect" class="hidden">
-		<input type="radio" id="longDirection">Long Direction&nbsp;
-		<input type="radio" id="shortDirection">Short Direction
+	<div id="directionSelection" class="hidden">
+		<input type="radio" id="longDirection" name="directionSelect" checked="checked">Long Direction&nbsp;
+		<input type="radio" id="shortDirection" name="directionSelect">Short Direction
 	</div>
 	<input type="submit" id="submit">
-	<div id="mathResults"></div>
+	<div id="mathResults" class="hidden">Horizontal Distance: </div>
 
 	<br> 
 
 	<p> Lighting Diagrams: </p> <!-- First row: PAR images -->
-	<div class="floated_img">
-	    <img src="PNGs/VeryWide.png" alt="PAR - Very Wide" height = "150" width = "150">
-	    <p>PAR - VeryWide</p>
+	<div id="par">
+		<div class="floated_img">
+		    <img src="PNGs/VeryWide.png" alt="PAR - Very Wide" height = "150" width = "150">
+		    <p>PAR - VeryWide</p>
+		</div>
+		<div class="floated_img">
+		    <img src="PNGs/Wide.png" alt="PAR - Wide" height = "150" width = "150">
+		    <p>PAR - Wide</p>
+		</div>
+		<div class="floated_img">
+		    <img src="PNGs/Normal.png" alt="PAR - Normal" height = "150" width = "150">
+		    <p>PAR - Normal</p>
+		</div>
+		<div class="floated_img">
+		    <img src="PNGs/Narrow.png" alt="PAR - Narrow" height = "150" width = "150">
+		    <p>PAR - Narrow</p>
+		</div>
+		<div class="floated_img">
+		    <img src="PNGs/VeryNarrow.png" alt="PAR - Very Narrow" height = "150" width = "150">
+		    <p>PAR - Very Narrow</p>
+		</div>
 	</div>
-	<div class="floated_img">
-	    <img src="PNGs/Wide.png" alt="PAR - Wide" height = "150" width = "150">
-	    <p>PAR - Wide</p>
-	</div>
-	<div class="floated_img">
-	    <img src="PNGs/Normal.png" alt="PAR - Normal" height = "150" width = "150">
-	    <p>PAR - Normal</p>
-	</div>
-	<div class="floated_img">
-	    <img src="PNGs/Narrow.png" alt="PAR - Narrow" height = "150" width = "150">
-	    <p>PAR - Narrow</p>
-	</div>
-	<div class="floated_img">
-	    <img src="PNGs/VeryNarrow.png" alt="PAR - Very Narrow" height = "150" width = "150">
-	    <p>PAR - Very Narrow</p>
-	</div>
-	<div class="floated_img">
-	    <img src="PNGs/19_Ellipsoidal.png" alt="Ellipsoidal: 19&deg;" height = "150" width = "150">
-	    <p>Ellipsoidal: 19&deg;</p>
-	</div>
-	<div class="floated_img">
-	    <img src="PNGs/26_Ellipsoidal.png" alt="Ellipsoidal: 26&deg;" height = "150" width = "150">
-	    <p>Ellipsoidal: 26&deg;</p>
-	</div>
-	<div class="floated_img">
-	    <img src="PNGs/36_Ellipsoidal.png" alt="Ellipsoidal: 36&deg;" height = "150" width = "150">
-	    <p>Ellipsoidal: 36&deg;</p>
-	</div>
-	<div class="floated_img">
-	    <img src="PNGs/50_Ellipsoidal.png" alt="Ellipsoidal: 50&deg;" height = "150" width = "150">
-	    <p>Ellipsoidal: 50&deg;</p>
-	</div>
-	<div class="floated_img">
-	    <img src="PNGs/70_Ellipsoidal.png" alt="Ellipsoidal: 70&deg;" height = "150" width = "150">
-	    <p>Ellipsoidal: 70&deg;</p>
-	</div>
-	<div class="floated_img">
-	    <img src="PNGs/90_Ellipsoidal.png" alt="Ellipsoidal: 90&deg;" height = "150" width = "150">
-	    <p>Ellipsoidal: 90&deg;</p>
+	<div id="ellipsoidal">
+		<div class="floated_img">
+		    <img src="PNGs/19_Ellipsoidal.png" alt="Ellipsoidal: 19&deg;" height = "150" width = "150">
+		    <p>Ellipsoidal: 19&deg;</p>
+		</div>
+		<div class="floated_img">
+		    <img src="PNGs/26_Ellipsoidal.png" alt="Ellipsoidal: 26&deg;" height = "150" width = "150">
+		    <p>Ellipsoidal: 26&deg;</p>
+		</div>
+		<div class="floated_img">
+		    <img src="PNGs/36_Ellipsoidal.png" alt="Ellipsoidal: 36&deg;" height = "150" width = "150">
+		    <p>Ellipsoidal: 36&deg;</p>
+		</div>
+		<div class="floated_img">
+		    <img src="PNGs/50_Ellipsoidal.png" alt="Ellipsoidal: 50&deg;" height = "150" width = "150">
+		    <p>Ellipsoidal: 50&deg;</p>
+		</div>
+		<div class="floated_img">
+		    <img src="PNGs/70_Ellipsoidal.png" alt="Ellipsoidal: 70&deg;" height = "150" width = "150">
+		    <p>Ellipsoidal: 70&deg;</p>
+		</div>
+		<div class="floated_img">
+		    <img src="PNGs/90_Ellipsoidal.png" alt="Ellipsoidal: 90&deg;" height = "150" width = "150">
+		    <p>Ellipsoidal: 90&deg;</p>
+		</div>
 	</div>
 </body>
 

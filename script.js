@@ -51,31 +51,59 @@ function main () {
 	document.getElementById("lights").onchange = function (event) {
 		 var lightName = event.target.value;
 		 multFactor = lightFactors[lightName];
+		 console.log(multFactor);
+		 if (typeof(multFactor) === 'number') {
+		 	// make sure the radio buttons have hidden in the class
+		 	if (!document.getElementById("directionSelection").classList.contains('hidden')) {
+		 		document.getElementById('directionSelection').classList.add('hidden');
+		 	}
+		 }
+		 else {
+		 	// make sure the radio buttons do not have hidden in the class
+		 	if (document.getElementById("directionSelection").classList.contains('hidden')) {
+		 		$('#directionSelection').removeClass('hidden');
+		 	}
+		 }
 	}
 
-	document.getElementById("submit").onmousedown = function (event) {
+	$("body").keypress (function(event) {
+		if (event.charCode === 13) {
+			submit ();
+		}
+	})
+
+	document.getElementById("submit").onmousedown = submit;
+
+	 function submit () {
+		if (document.getElementById("mathResults").classList.contains("hidden")) {
+			$('#mathResults').removeClass('hidden');
+		}
 		if (document.getElementById("mathResults").classList.contains('error')) {
 			$('#mathResults').removeClass('error');
 		}
-		if (typeof(multFactor) === 'number') {
-			var horizontalDistance = equation (diameter, multFactor, height);
-			if (isNaN(horizontalDistance)) {
-				console.log("error");
-				error ();
+		var multFactorNum;
+		if (typeof(multFactor) !== 'number') {
+			if (document.getElementById("longDirection").checked) {
+				multFactorNum = multFactor[1];
 			}
-			else {
-				document.getElementById("mathResults").innerHTML = "Horizontal Distance: "
-			 														+ horizontalDistance;
+			if (document.getElementById("shortDirection").checked) {
+				multFactorNum = multFactor[0];
 			}
 		}
 		else {
-			var retString = "Horizontal Distances:<br />";
-			console.log(multFactor);
-			retString += equation(diameter, multFactor[0], height)
-						 + " (diameter as short distance) <br />"
-						 + equation(diameter, multFactor[1], height)
-						 + " (diameter as long distance)"; 
-			document.getElementById("mathResults").innerHTML = retString;
+			multFactorNum = multFactor
+		}
+		console.log(diameter);
+		console.log(height);
+		console.log(multFactorNum);
+		var horizontalDistance = equation (diameter, multFactorNum, height);
+		if (isNaN(horizontalDistance)) {
+			console.log("error");
+			error ();
+		}
+		else {
+			document.getElementById("mathResults").innerHTML = "Horizontal Distance: "
+																+ horizontalDistance;
 		}
 	}
 
