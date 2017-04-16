@@ -8,6 +8,7 @@
 var diameter;
 var height;
 var multFactor;
+var distance;
 var lightFactors = {
 					"ETC-S4-E-5deg": 0.12,
 					"ETC-S4-E-10deg": 0.18,
@@ -40,8 +41,8 @@ var lightFactors = {
 
 function main () {
 	// document.getElementById("diameter").onchange = function (event) {
-	document.getElementById("diameter").onchange = function (event) {
-		diameter = event.target.value;
+	document.getElementById("distance").onchange = function (event) {
+		distance = event.target.value;
 	}
 
 	document.getElementById("height").onchange = function (event) {
@@ -96,19 +97,20 @@ function main () {
 		console.log(diameter);
 		console.log(height);
 		console.log(multFactorNum);
-		var horizontalDistance = equation (diameter, multFactorNum, height);
-		if (isNaN(horizontalDistance)) {
+		var diameter = equation (distance, multFactorNum, height);
+		if (isNaN(diameter)) {
 			console.log("error");
 			error ();
 		}
 		else {
-			document.getElementById("mathResults").innerHTML = "Horizontal Distance: "
-																+ horizontalDistance;
+			document.getElementById("mathResults").innerHTML = "Diameter: "
+																+ diameter;
 		}
 	}
 
-	function equation (diam, multiplicationFactor, gridHeight) {
-		return Math.sqrt(Math.pow((diam / multiplicationFactor), 2) - Math.pow(gridHeight, 2));
+	function equation (distance, multiplicationFactor, gridHeight) {
+		return Math.sqrt(Math.pow(gridHeight, 2) + Math.pow(distance, 2)) * multiplicationFactor;
+		// return Math.sqrt(Math.pow((diam / multiplicationFactor), 2) - Math.pow(gridHeight, 2));
 	}
 
 	function error () {
